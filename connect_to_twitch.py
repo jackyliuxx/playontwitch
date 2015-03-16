@@ -16,7 +16,6 @@ class user:
         except:
             print('Fail to connect to twitch!!')
             return False
-        s.sendall(str.encode('USER %s\r\n' % username))
         s.sendall(str.encode('PASS %s\r\n' % key))
         s.sendall(str.encode('NICK %s\r\n' % username))
         data = bytes.decode(s.recv(1024))
