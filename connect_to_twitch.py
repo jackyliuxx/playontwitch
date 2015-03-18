@@ -23,18 +23,21 @@ class user:
             print('Wrong username or key!!')
             return False
         print('Success!!')
+        s.settimeout(0.5);
         self.s = s
         return True
     
     def join(self, channal):
         s = self.s
+        s.settimeout(5);
         s.sendall(str.encode('JOIN #%s\r\n' % channal))
         try:
             data = bytes.decode(self.s.recv(1024))
         except:
-            print('Fail to join %s!!' % channal)
+            print('Fail to join #%s!!' % channal)
             return False
-        print('Join to %s!!' % channal)
+        print('Succeed to join #%s!!' % channal)
+        s.settimeout(0.5);
         return True
 
     def parse_message(self, msg):
@@ -47,6 +50,8 @@ class user:
         s = self.s
         try:
             data = bytes.decode(s.recv(1024))
+        except KeyboardInterrupt:
+            return None
         except:
             return []
         rt = []
