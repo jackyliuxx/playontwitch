@@ -7,7 +7,7 @@ class user:
         self.username = username
         self.key = key
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(5)
+        s.settimeout(10)
         host = 'irc.twitch.tv'
         port = 6667
         print('Connecting to twitch...')
@@ -29,7 +29,7 @@ class user:
     
     def join(self, channal):
         s = self.s
-        s.settimeout(5);
+        s.settimeout(10);
         s.sendall(str.encode('JOIN #%s\r\n' % channal))
         try:
             data = bytes.decode(self.s.recv(1024))
