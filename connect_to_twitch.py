@@ -56,6 +56,8 @@ class user:
             return []
         rt = []
         for msg in data.split('\r\n'):
+            if msg == 'PING :tmi.twitch.tv':
+                s.sendall(str.encode('PONG :tmi.twitch.tv\r\n'))
             p_msg = self.parse_message(msg)
             if p_msg:
                 rt.append(p_msg)
