@@ -18,7 +18,7 @@ class user:
             return False
         s.sendall(str.encode('PASS %s\r\n' % key))
         s.sendall(str.encode('NICK %s\r\n' % username))
-        data = bytes.decode(s.recv(1024))
+        data = bytes.decode(s.recv(10240))
         if data == ':tmi.twitch.tv NOTICE * :Login unsuccessful\r\n':
             print('Wrong username or key!!')
             return False
@@ -32,7 +32,7 @@ class user:
         s.settimeout(10);
         s.sendall(str.encode('JOIN #%s\r\n' % channal))
         try:
-            data = bytes.decode(self.s.recv(1024))
+            data = bytes.decode(self.s.recv(10240))
         except:
             print('Fail to join #%s!!' % channal)
             return False
@@ -49,7 +49,7 @@ class user:
     def new_messages(self):
         s = self.s
         try:
-            data = bytes.decode(s.recv(1024))
+            data = bytes.decode(s.recv(10240))
         except KeyboardInterrupt:
             return None
         except:
