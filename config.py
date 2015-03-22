@@ -1,7 +1,7 @@
 username = ''
 key = ''
 channal = ''
-# mode (1)normal (2)multy-command at once
+# mode (0)normal (1)multy-command at once
 mode = 1
 # max command at once in mode 1
 max_command = 10
